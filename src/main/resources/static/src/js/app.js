@@ -31,7 +31,32 @@
 //}, 3000);
 
 // With jQuery
-
-//const $asideContent = $('#asideContent')
-//
+// does the same thing as the vanilla js code at first, but with jQuery
+const $asideContent = $('#asideContent')
 //$asideContent.load('../sidebar.html')
+
+//$.get()
+// The location you want to query
+//const url = '/sidebar.html'
+//// This will get appended to the url as
+//// a query string '?courseName=javascript'
+//const data = {
+//    courseName: 'javascript'
+//};
+//// What you want to do when the response comes back
+//const callback = function(response) {
+//    $($('main')).append('<p>' + response + '</p>')
+//}
+//$.get(url, data, callback)
+
+$.ajax({
+	type: 'GET',
+	dataType: 'html',
+	url: '../sidebar.html',
+	success: function(res) {
+		$asideContent.html(res)
+	},
+	error: function(res) {
+		$asideContent.text('You did something bad')
+	}
+})
